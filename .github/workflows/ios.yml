@@ -78,3 +78,19 @@ jobs:
           name: build-logs
           path: build/*.log
           retention-days: 3
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Campus-unsigned-IPA
+          path: release-files
+      - name: Preserve versioned IPA in GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" release-files/Campus-unsigned.ipa --verify-tag --title "校园助手 iOS $GITHUB_REF_NAME" --notes-file docs/RELEASE.md
