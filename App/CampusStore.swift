@@ -83,6 +83,7 @@ final class CampusStore: ObservableObject {
             let cookies = await withCheckedContinuation { continuation in
                 webData.httpCookieStore.getAllCookies { continuation.resume(returning: $0) }
             }
+            guard requestID == generation else { return }
             guard !cookies.isEmpty else { throw CampusError.expiredSession }
             let client = try AcademicClient(school: school, cookies: cookies)
             activeClient = client

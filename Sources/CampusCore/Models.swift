@@ -81,7 +81,7 @@ public struct Grade: Codable, Identifiable, Equatable {
         self.id = id; self.name = name; self.score = score; self.credits = credits; self.point = point; self.kind = kind
     }
     public static func weightedGPA(_ grades: [Grade]) -> Double? {
-        let eligible = grades.filter { ($0.credits ?? 0) > 0 && $0.point != nil }
+        let eligible = grades.filter { ($0.credits ?? 0) > 0 && $0.credits?.isFinite == true && $0.point?.isFinite == true }
         let weight = eligible.reduce(0.0) { $0 + ($1.credits ?? 0) }
         return weight > 0 ? eligible.reduce(0.0) { $0 + ($1.credits ?? 0) * ($1.point ?? 0) } / weight : nil
     }
