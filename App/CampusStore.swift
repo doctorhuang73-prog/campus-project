@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-only
 import Foundation
 import SwiftUI
 import WebKit
@@ -18,12 +18,12 @@ final class CampusStore: ObservableObject {
     @Published private(set) var webData = WKWebsiteDataStore.nonPersistent()
     private var generation = UUID()
     private var activeClient: AcademicClient?
-    private let configKey = "campus-school-v1"
-    private let termKey = "campus-term-v1"
+    private static let configKey = "campus-school-v1"
+    private static let termKey = "campus-term-v1"
 
     init() {
-        school = UserDefaults.standard.data(forKey: configKey).flatMap { try? JSONDecoder().decode(School.self, from: $0) } ?? School()
-        term = UserDefaults.standard.data(forKey: termKey).flatMap { try? JSONDecoder().decode(Term.self, from: $0) } ?? .current
+        school = UserDefaults.standard.data(forKey: Self.configKey).flatMap { try? JSONDecoder().decode(School.self, from: $0) } ?? School()
+        term = UserDefaults.standard.data(forKey: Self.termKey).flatMap { try? JSONDecoder().decode(Term.self, from: $0) } ?? .current
         if let data = try? Data(contentsOf: Self.cacheURL), let saved = try? JSONDecoder().decode(Snapshot.self, from: data),
            saved.school == school, saved.term == term {
             snapshot = saved; demo = false
@@ -65,8 +65,8 @@ final class CampusStore: ObservableObject {
             try? FileManager.default.removeItem(at: Self.cacheURL)
         }
         school = newSchool; term = newTerm; demo = false
-        UserDefaults.standard.set(try JSONEncoder().encode(school), forKey: configKey)
-        UserDefaults.standard.set(try JSONEncoder().encode(term), forKey: termKey)
+        UserDefaults.standard.set(try JSONEncoder().encode(school), forKey: Self.configKey)
+        UserDefaults.standard.set(try JSONEncoder().encode(term), forKey: Self.termKey)
     }
     func setDemo(_ value: Bool) {
         generation = UUID(); activeClient?.close(); activeClient = nil; busy = false

@@ -48,4 +48,4 @@ GPA 只使用学校返回的有效学分与绩点，不把“优秀”等成绩�
 
 ## 授权与来源
 
-参照与改写来源见 [THIRD_PARTY.md](THIRD_PARTY.md)。当前 iOS 实现按 GPL-3.0-or-later 提供；仓库创建时的 MIT 文本另行保存在 `LICENSE.initial-MIT`，不用于重新许可上游衍生内容。
+参照与改写来源见 [THIRD_PARTY.md](THIRD_PARTY.md)。当前 iOS 实现按 GPL-3.0-only 提供；仓库创建时的 MIT 文本另行保存在 `LICENSE.initial-MIT`，不用于重新许可上游衍生内容。

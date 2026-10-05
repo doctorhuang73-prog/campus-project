@@ -7,9 +7,6 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  group: ios-${{ github.ref }}
-  cancel-in-progress: true
 jobs:
   build:
     # This project is public. Standard GitHub-hosted macOS runners have no compute charge.

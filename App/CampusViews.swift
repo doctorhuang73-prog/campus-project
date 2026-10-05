@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-only
 import SwiftUI
 
 private let ink = Color(red: 0.14, green: 0.20, blue: 0.30)
@@ -289,7 +289,7 @@ struct SettingsScreen: View {
                     .font(.caption).foregroundStyle(.secondary).padding(.vertical, 8)
                 Link("查看本项目源码", destination: URL(string: "https://github.com/doctorhuang73-prog/campus-project")!)
                 Link("原安卓开源项目", destination: URL(string: "https://github.com/znjhahaha/zhengfang-apk")!).padding(.top, 5)
-                Text("GPL-3.0-or-later · 详见仓库许可证与来源说明").font(.caption2).foregroundStyle(.secondary).padding(.top, 6)
+                Text("GPL-3.0-only · 详见仓库许可证与来源说明").font(.caption2).foregroundStyle(.secondary).padding(.top, 6)
             }
         }
         .onAppear { name = store.school.name; address = store.school.address; year = store.term.year; semester = store.term.semester }

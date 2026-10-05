@@ -8,4 +8,4 @@
 
 初版通过学校原网页进行手动选退课，尚无自动抢课/捡漏队列、锁屏定时、小组件和通知。请阅读 README 和 docs/MIGRATION.md 了解迁移边界。
 
-本项目不是原安卓作者发布的官方 iOS 版。上游来源与许可见 THIRD_PARTY.md，源代码按 GPL-3.0-or-later 发布。
+本项目不是原安卓作者发布的官方 iOS 版。上游来源与许可见 THIRD_PARTY.md，源代码按 GPL-3.0-only 发布。

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-only
 // Field mappings follow znjhahaha/zhengfang-apk; see THIRD_PARTY.md.
 import Foundation
 
