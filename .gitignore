@@ -9,4 +9,4 @@ DerivedData/
 *.mobileprovision
 .env
 *.xcuserstate
-
+.qa-artifacts/
